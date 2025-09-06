@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ developer.username }}{% endblock %}
+
+{% block content %}
+    <h1>{{ developer.username }}</h1>
+        <ul>
+            <li><strong>Name:</strong> {{ developer.name }}</li>
+            <li><strong>Location:</strong> {{ developer.location }}</li>
+            <!-- Add more fields as needed -->
+        </ul>
+{% endblock %}
