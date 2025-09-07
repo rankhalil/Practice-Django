@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Add Developer to DevStats
+{% endblock %}
+
+{% block content %}
+<div class="developer-create-container">
+  <div class="create-header">
+    <h1>🚀 Add New Developer</h1>
+    <p class="subtitle">Discover amazing developers and their GitHub stats</p>
+  </div>
+  
+  <div class="search-form-wrapper">
+    <form action="" method="post" class="developer-form">
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="id_username" class="form-label">
+          <i class="github-icon">🐙</i>
+          GitHub Username
+        </label>
+        {{ form.username }}
+        <div class="form-hint">Enter a GitHub username to fetch their profile and repositories</div>
+      </div>
+      
+      <button type="submit" class="submit-btn">
+        <span class="btn-text">Search & Add Developer</span>
+        <span class="btn-icon">🔍</span>
+      </button>
+    </form>
+  </div>
+  
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Live Stats</h3>
+      <p>Get real-time GitHub statistics</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⭐</div>
+      <h3>Repository Data</h3>
+      <p>Stars, forks, and watchers count</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <h3>Profile Info</h3>
+      <p>Name, location, and company details</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.developer-create-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  color: white;
+}
+
+.create-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.create-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.search-form-wrapper {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+
+.github-icon {
+  font-size: 1.2rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #fff;
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.form-group input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.form-hint {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+  border: none;
+  padding: 1.2rem 2rem;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+  background: linear-gradient(45deg, #ff5252, #d32f2f);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.15);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .developer-create-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .create-header h1 {
+    font-size: 2rem;
+  }
+  
+  .search-form-wrapper {
+    padding: 1.5rem;
+  }
+}
+</style>
+{% endblock %}
